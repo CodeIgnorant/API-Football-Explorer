@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <!-- Yerel Bootstrap CSS -->
-    <link href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1 class="text-center">Welcome to the Home Page!</h1>
-    </div>
+{% extends "base.html" %}
 
-    <!-- Yerel Bootstrap JS -->
-    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
-</body>
-</html>
+{% block title %}Flask Projesi{% endblock %}
+
+{% block content %}
+    <h1>Hoş Geldiniz!</h1>
+    <p>Bu, Flask uygulamanızın ana sayfasıdır.</p>
+{% endblock %}

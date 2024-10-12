@@ -1,4 +1,4 @@
-from flask import jsonify  # jsonify fonksiyonunu içe aktar
+from flask import render_template  # render_template fonksiyonunu içe aktar
 from app import app  # app nesnesini içe aktar
 from app.api.country_service import Countries  # Countries sınıfını içe aktar
 from app.api.api_client import APIClient  # APIClient sınıfını içe aktar
@@ -14,7 +14,7 @@ def get_all_countries():
     # Yanıtın kontrolü
     if countries is not None:
         logging.info(f"Ülkeler başarıyla alındı: {countries}")  # Loglama
-        return jsonify(countries), 200  # Başarılı yanıt
+        return render_template('countries.html', countries=countries)  # HTML şablonunu renderla
     else:
         logging.error("Ülkeler alınamadı!")  # Hata loglama
-        return jsonify({"message": "Ülkeler alınamadı!"}), 500  # Hata durumu
+        return render_template('error.html', message="Ülkeler alınamadı!")  # Hata sayfasını renderla
