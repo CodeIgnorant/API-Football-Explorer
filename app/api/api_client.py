@@ -16,7 +16,7 @@ class APIConnection:
     def test_connection(self):
         """API'ye bağlantı kurup kuramadığımızı test eder."""
         try:
-            response = requests.get(self.api_url, headers=self.headers)
+            response = requests.get(self.api_url, headers=self.headers, timeout=10)
             if response.status_code == 200:
                 logging.info("API bağlantısı başarılı!")
                 return True
@@ -48,12 +48,9 @@ class APIClient:
         if params is None:
             params = {}
 
-        # Timezone parametresini kaldırdık
-        # params["timezone"] = self.timezone
-
         for attempt in range(retries):
             try:
-                response = requests.get(url, headers=self.headers, params=params)
+                response = requests.get(url, headers=self.headers, params=params, timeout=10)
                 logging.info(f"API'ye istek gönderildi: Deneme {attempt + 1}")  # İstek gönderildiğini kontrol etmek için log
                 logging.info(f"Yanıt Durum Kodu: {response.status_code}")  # Yanıt durum kodunu kontrol etmek için log
                 response.raise_for_status()
@@ -66,13 +63,18 @@ class APIClient:
                     logging.info("Tekrar deneniyor...")
                 else:
                     logging.error("Tüm denemeler başarısız oldu.")
-                    return None
+                    return {"error": "API bağlantısı başarısız oldu", "status": response.status_code if response else "No response"}
 
     def extract_response(self, response):
-        """API yanıtındaki 'response' anahtarını çıkaran metod"""
-        if response and "response" in response:
+        """API yanıtını esnek bir şekilde işleyen metod"""
+        if isinstance(response, dict) and "response" in response:
+            # Yanıt bir sözlükse ve 'response' anahtarını içeriyorsa bunu döndürelim
             return response["response"]
+        elif isinstance(response, list):
+            # Eğer yanıt bir listeyse direkt olarak listeyi döndürelim
+            return response
         else:
+            # Beklenmeyen bir yapı dönerse bir hata logu verelim
             logging.error("Beklenen veri yapısı bulunamadı.")
             logging.error(f"Tam Yanıt: {response}")  # Yanıtı daha detaylı görmek için tam içeriği log
             return None

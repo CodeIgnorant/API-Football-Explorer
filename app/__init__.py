@@ -14,5 +14,6 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 # Controller'ları dahil et
 from app.controllers import (
     test_api_controller,  # Test API ile ilgili controller
-    countries_controller    # Ülkeler ile ilgili controller
+    countries_controller,  # Ülkeler ile ilgili controller
+    home_controller        # Ana sayfa ile ilgili controller (yeni eklenen)
 )

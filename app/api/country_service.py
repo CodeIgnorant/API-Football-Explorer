@@ -11,8 +11,8 @@ class Countries:
         response = self.api_client.make_request(endpoint)
         logging.info(f"API'den gelen yanıt: {response}")  # Log ekleyelim
 
-        # Yanıtın 'response' anahtarının içeriğini döndür
-        return response.get("response", None)  # Anahtar içindeki veriyi döndür
+        # API'nin dönen yanıtının bir liste olduğunu varsayarak yanıtı direkt döndürüyoruz
+        return response
 
     def get_country_by_name(self, name):
         """Ülke ismine göre ülke bilgilerini almak için kullanılan metod"""
@@ -20,8 +20,8 @@ class Countries:
         params = {"name": name}
         response = self.api_client.make_request(endpoint, params=params)
 
-        # Yanıtın 'response' anahtarının içeriğini döndür
-        return response.get("response", None)  # Anahtar içindeki veriyi döndür
+        # Yanıtın bir liste olduğunu varsayarak direkt listeyi döndürüyoruz
+        return response
 
     def get_country_by_code(self, code):
         """Ülke koduna göre ülke bilgilerini almak için kullanılan metod"""
@@ -29,8 +29,8 @@ class Countries:
         params = {"code": code}
         response = self.api_client.make_request(endpoint, params=params)
 
-        # Yanıtın 'response' anahtarının içeriğini döndür
-        return response.get("response", None)  # Anahtar içindeki veriyi döndür
+        # Yanıtın bir liste olduğunu varsayarak direkt listeyi döndürüyoruz
+        return response
 
     def get_country_flag_url(self, country_code):
         """Ülke koduna göre bayrak URL'sini almak için kullanılan metod"""
