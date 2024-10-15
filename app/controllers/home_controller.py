@@ -1,5 +1,5 @@
 from flask import render_template
-from app import app  # Eğer bir app nesnesi oluşturduysan, bu dosya burada tanımlı olmalı.
+from app import app
 
 @app.route('/')
 def home():

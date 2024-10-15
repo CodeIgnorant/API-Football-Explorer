@@ -1,5 +1,4 @@
 from flask import Flask
-import os
 import logging
 
 # Flask uygulamasını başlat
