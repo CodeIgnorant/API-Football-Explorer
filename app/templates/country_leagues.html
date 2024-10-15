@@ -3,28 +3,28 @@
 {% block title %}{{ country_name }} Ülkesi Ligi{% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <h2>{{ country_name }} Ülkesi Ligi (2024)</h2>
-    <table class="table table-bordered">
+<div class="container mx-auto py-4">
+    <h2 class="text-2xl font-bold">{{ country_name }} Ülkesi Ligi (2024)</h2>
+    <table class="min-w-full border-collapse border border-gray-300">
         <thead>
-            <tr>
-                <th>Lig Adı</th>        <!-- Lig Adı -->
-                <th>Tür</th>           <!-- Lig Türü -->
-                <th>Sezon</th>         <!-- Sezon Yılı -->
-                <th>Başlangıç</th>     <!-- Başlangıç Tarihi -->
-                <th>Bitiş</th>         <!-- Bitiş Tarihi -->
-                <th>Aktif Sezon</th     <!-- Aktif Sezon Durumu -->
+            <tr class="bg-gray-200">
+                <th class="border border-gray-300 px-4 py-2">Lig Adı</th>
+                <th class="border border-gray-300 px-4 py-2">Tür</th>
+                <th class="border border-gray-300 px-4 py-2">Sezon</th>
+                <th class="border border-gray-300 px-4 py-2">Başlangıç</th>
+                <th class="border border-gray-300 px-4 py-2">Bitiş</th>
+                <th class="border border-gray-300 px-4 py-2">Aktif Sezon</th>
             </tr>
         </thead>
         <tbody>
             {% for league in leagues %}
-                <tr>
-                    <td>{{ league.league.name }}</td>                          <!-- Lig Adı -->
-                    <td>{{ league.league.type }}</td>                          <!-- Lig Türü -->
-                    <td>{{ league.seasons[0].year }}</td>                     <!-- Sezon Yılı -->
-                    <td>{{ league.seasons[0].start }}</td>                    <!-- Başlangıç Tarihi -->
-                    <td>{{ league.seasons[0].end }}</td>                      <!-- Bitiş Tarihi -->
-                    <td>{{ 'Evet' if league.seasons[0].current else 'Hayır' }}</td>  <!-- Aktif Sezon Durumu -->
+                <tr class="hover:bg-gray-100">
+                    <td class="border border-gray-300 px-4 py-2">{{ league.league.name }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ league.league.type }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ league.seasons[0].year }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ league.seasons[0].start }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ league.seasons[0].end }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ 'Evet' if league.seasons[0].current else 'Hayır' }}</td>
                 </tr>
             {% endfor %}
         </tbody>

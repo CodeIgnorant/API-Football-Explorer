@@ -3,19 +3,18 @@
 {% block title %}Ülkeler{% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <h2>Ülkeler</h2>
+<div class="container mx-auto py-4">
+    <h2 class="text-2xl font-bold">Ülkeler</h2>
     {% if countries %}
-    <ul class="list-group">
-        {% for country in countries.response %} <!-- response anahtarını ekledik -->
-        <li class="list-group-item">
-            <a href="{{ url_for('get_country_leagues', country_name=country.name) }}">{{ country.name }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+        <ul class="list-group">
+            {% for country in countries.response %} <!-- response anahtarını ekledik -->
+                <li class="list-group-item py-2">
+                    <a href="{{ url_for('get_country_leagues', country_name=country.name) }}" class="text-blue-600 hover:underline">{{ country.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
     {% else %}
-    <p>Hiçbir ülke bulunamadı.</p>
+        <p class="text-red-500">Hiçbir ülke bulunamadı.</p>
     {% endif %}
-
 </div>
 {% endblock %}

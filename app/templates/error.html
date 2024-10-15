@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hata</title>
-    <link href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet"> <!-- Tailwind CSS CDN -->
 </head>
-<body>
-    <div class="container mt-4">
-        <h1 class="text-danger">Bir Hata Oluştu!</h1>
-        <p>{{ message }}</p>
-        <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-4">
+        <h1 class="text-red-600 text-3xl font-bold">Bir Hata Oluştu!</h1>
+        <p class="mt-2">{{ message }}</p>
+        <a href="/" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ana Sayfaya Dön</a>
     </div>
 </body>
 </html>
