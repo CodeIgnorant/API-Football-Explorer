@@ -2,9 +2,8 @@ import logging
 from app.api.api_client import APIClient
 
 class Countries:
-    def __init__(self):
-        # APIClient'ı Config'den al
-        self.api_client = APIClient()
+    def __init__(self, api_client):  # APIClient'ı parametre olarak al
+        self.api_client = api_client  # APIClient nesnesini al
 
     def get_countries(self):
         """Mevcut tüm ülkelerin listesini almak için kullanılan metod."""

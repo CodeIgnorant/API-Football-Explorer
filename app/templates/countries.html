@@ -5,12 +5,17 @@
 {% block content %}
 <div class="container py-4">
     <h2>Ülkeler</h2>
+    {% if countries %}
     <ul class="list-group">
-        {% for country in countries %}
-            <li class="list-group-item">
-                <a href="{{ url_for('get_country_leagues', country_name=country.name) }}">{{ country.name }}</a>
-            </li>
+        {% for country in countries.response %} <!-- response anahtarını ekledik -->
+        <li class="list-group-item">
+            <a href="{{ url_for('get_country_leagues', country_name=country.name) }}">{{ country.name }}</a>
+        </li>
         {% endfor %}
     </ul>
+    {% else %}
+    <p>Hiçbir ülke bulunamadı.</p>
+    {% endif %}
+
 </div>
 {% endblock %}

@@ -5,11 +5,11 @@ from app.api.api_client import APIClient  # APIClient sınıfını içe aktar
 import logging  # Loglama için gerekli
 
 @app.route('/countries')
-def get_all_countries():
+def get_countries():
     """Tüm ülkeleri almak için API'den istek yapan fonksiyon."""
     api_client = APIClient()  # APIClient nesnesini oluştur
     countries_service = Countries(api_client)  # APIClient nesnesini geçiriyoruz
-    countries = countries_service.get_all_countries()  # Tüm ülkeleri al
+    countries = countries_service.get_countries()  # Tüm ülkeleri al
     
     # Yanıtın kontrolü
     if countries is not None:
