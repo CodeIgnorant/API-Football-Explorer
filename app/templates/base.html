@@ -14,12 +14,17 @@
                     <h1 class="text-lg font-semibold">Flask Uygulaması</h1>  
                 </a>
                 <ul class="flex space-x-4">
-                    <li><a href="/" class="text-gray-300 hover:text-white">Ana Sayfa</a></li>
-                    <li><a href="/countries" class="text-white hover:text-gray-300">Ülkeler</a></li>
+                    <li>
+                        <a href="/" class="bg-gray-600 text-gray-300 hover:text-white px-4 py-2 rounded hover:bg-gray-700 transition">Ana Sayfa</a>
+                    </li>
+                    <li>
+                        <a href="/countries" class="bg-gray-600 text-white hover:text-gray-300 px-4 py-2 rounded hover:bg-gray-700 transition">Ülkeler</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </header>
+    
 
     <main class="py-4">
         {% block content %}

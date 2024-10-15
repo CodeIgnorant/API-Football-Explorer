@@ -9,7 +9,7 @@ class Countries:
         """Mevcut tüm ülkelerin listesini almak için kullanılan metod."""
         endpoint = "countries"
         response = self.api_client.send_request(endpoint)  # APIClient ile istek gönder
-        logging.info(f"API'den gelen yanıt: {response}")  # Log ekleyelim
+        logging.debug(f"API'den gelen yanıt: {response}")  # Daha düşük seviye bir log
 
         if response is None or len(response) == 0:
             logging.error("API'den hata alındı veya yanıt boş.")

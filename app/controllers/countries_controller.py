@@ -13,7 +13,7 @@ def get_countries():
     
     # Yanıtın kontrolü
     if countries is not None:
-        logging.info(f"Ülkeler başarıyla alındı: {countries}")  # Loglama
+        logging.info("Ülkeler başarıyla alındı.")  # Sadece başarı mesajı
         return render_template('countries.html', countries=countries)  # HTML şablonunu renderla
     else:
         logging.error("Ülkeler alınamadı!")  # Hata loglama

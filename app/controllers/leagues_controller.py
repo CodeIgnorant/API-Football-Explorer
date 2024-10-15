@@ -4,17 +4,17 @@ from app.api.league_service import Leagues  # Leagues sınıfını içe aktar
 from app.api.api_client import APIClient  # APIClient sınıfını içe aktar
 import logging
 
-@app.route('/<country_name>/2024/leagues')  # Ülke adı ile 2024 sezonundaki ligler
+@app.route('/<country_name>/leagues')  # Ülke adı ile aktif ligler
 def get_country_leagues(country_name):
-    """Belirli bir ülkenin 2024 sezonundaki liglerini almak için route."""
+    """Belirli bir ülkenin aktif liglerini almak için route."""
     api_client = APIClient()  # APIClient örneği oluştur
     leagues_service = Leagues(api_client)  # Leagues sınıfını başlat
 
-    # Ülkeye ait 2024 sezonundaki ligleri al
-    leagues = leagues_service.get_leagues_country_season_type(country_name, 2024, "league")
+    # Ülkeye ait aktif ligleri al
+    leagues = leagues_service.get_leagues_country_current_type(country_name, "league")
 
     # Loglama ile dönen veriyi kontrol et
-    logging.info(f"{country_name} ülkesindeki 2024 sezonundaki ligler: {leagues}")
+    logging.info(f"{country_name} ülkesindeki aktif ligler: {leagues}")
 
     # Eğer ligler varsa, şablonu renderla
     if leagues:
