@@ -14,7 +14,7 @@ def get_country_leagues(country_name):
     leagues = leagues_service.get_leagues_country_current_type(country_name, "league")
 
     # Loglama ile dönen veriyi kontrol et
-    logging.info(f"{country_name} ülkesindeki aktif ligler: {leagues}")
+    logging.info(f"{country_name} ülkesindeki aktif ligler listesi")
 
     # Eğer ligler varsa, şablonu renderla
     if leagues:
