@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Flask Uygulaması{% endblock %}</title>
+    <title>{% block title %}Flask Project{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS CDN -->
 </head>
 <body class="bg-gray-100">
@@ -11,14 +11,14 @@
         <div class="container mx-auto">
             <div class="flex flex-wrap items-center justify-between">
                 <a href="/" class="flex items-center mb-2 text-white text-decoration-none">
-                    <h1 class="text-lg font-semibold">Flask Uygulaması</h1>  
+                    <h1 class="text-lg font-semibold">Flask Project</h1>  
                 </a>
                 <ul class="flex space-x-4">
                     <li>
-                        <a href="/" class="bg-gray-600 text-gray-300 hover:text-white px-4 py-2 rounded hover:bg-gray-700 transition">Ana Sayfa</a>
+                        <a href="/" class="bg-gray-600 text-gray-300 hover:text-white px-4 py-2 rounded hover:bg-gray-700 transition">Home</a>
                     </li>
                     <li>
-                        <a href="/countries" class="bg-gray-600 text-white hover:text-gray-300 px-4 py-2 rounded hover:bg-gray-700 transition">Ülkeler</a>
+                        <a href="/countries" class="bg-gray-600 text-white hover:text-gray-300 px-4 py-2 rounded hover:bg-gray-700 transition">Countries</a>
                     </li>
                 </ul>
             </div>
@@ -31,10 +31,17 @@
         {% endblock %}
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 text-center py-3">
-        <div class="container mx-auto">
-            <p class="mb-0">© 2024 Flask Uygulaması. Tüm hakları saklıdır.</p>
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+          <p class="text-sm">
+            &copy; 2024 | Built with 
+            <a href="https://openai.com/" class="text-gray-300 hover:underline">OpenAI</a>, 
+            <a href="https://www.python.org/" class="text-gray-300 hover:underline">Python</a>, 
+            <a href="https://flask.palletsprojects.com/" class="text-gray-300 hover:underline">Flask</a>, 
+            <a href="https://tailwindcss.com/" class="text-gray-300 hover:underline">TailwindCSS</a>, and 
+            <a href="https://www.sqlite.org/" class="text-gray-300 hover:underline">SQLite</a>.
+          </p>
         </div>
-    </footer>
+      </footer>
 </body>
 </html>

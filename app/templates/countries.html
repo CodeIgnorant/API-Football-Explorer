@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Ülkeler{% endblock %}
+{% block title %}Countries{% endblock %}
 
 {% block content %}
 <div class="container mx-auto py-4">
-    <h2 class="text-2xl font-bold">Ülkeler</h2>
+    <h2 class="text-2xl font-bold">Countries</h2>
     {% if countries %}
         <ul class="list-group">
             {% for country in countries.response %} <!-- response anahtarını ekledik -->
@@ -14,7 +14,7 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p class="text-red-500">Hiçbir ülke bulunamadı.</p>
+        <p class="text-red-500">No countries found.</p>
     {% endif %}
 </div>
 {% endblock %}

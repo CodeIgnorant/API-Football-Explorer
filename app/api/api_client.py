@@ -1,6 +1,5 @@
 import requests
 import logging
-from flask import jsonify
 from app.api.api_connection import APIConnection
 
 class APIClient:
