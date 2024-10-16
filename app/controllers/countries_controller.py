@@ -1,20 +1,20 @@
-from flask import render_template  # render_template fonksiyonunu içe aktar
-from app import app  # app nesnesini içe aktar
-from app.api.country_service import Countries  # Countries sınıfını içe aktar
-from app.api.api_client import APIClient  # APIClient sınıfını içe aktar
-import logging  # Loglama için gerekli
+from flask import render_template  # Import the render_template function
+from app import app  # Import the app instance
+from app.api.country_service import Countries  # Import the Countries class
+from app.api.api_client import APIClient  # Import the APIClient class
+import logging  # Required for logging
 
 @app.route('/countries')
 def get_countries():
-    """Tüm ülkeleri almak için API'den istek yapan fonksiyon."""
-    api_client = APIClient()  # APIClient nesnesini oluştur
-    countries_service = Countries(api_client)  # APIClient nesnesini geçiriyoruz
-    countries = countries_service.get_countries()  # Tüm ülkeleri al
+    """Function that makes a request to the API to retrieve all countries."""
+    api_client = APIClient()  # Create an APIClient instance
+    countries_service = Countries(api_client)  # Pass the APIClient instance
+    countries = countries_service.get_countries()  # Retrieve all countries
     
-    # Yanıtın kontrolü
+    # Check the response
     if countries is not None:
-        logging.info("Ülkeler başarıyla alındı.")  # Sadece başarı mesajı
-        return render_template('countries.html', countries=countries)  # HTML şablonunu renderla
+        logging.info("Countries successfully retrieved.")  # Success message only
+        return render_template('countries.html', countries=countries)  # Render the HTML template
     else:
-        logging.error("Ülkeler alınamadı!")  # Hata loglama
-        return render_template('error.html', message="Ülkeler alınamadı!")  # Hata sayfasını renderla
+        logging.error("Countries could not be retrieved!")  # Error logging
+        return render_template('error.html', message="Countries could not be retrieved!")  # Render the error page

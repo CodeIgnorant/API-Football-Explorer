@@ -6,7 +6,7 @@ class TeamStats:
         self.api_client = api_client
 
     def get_team_statistics(self, team_id, league_id, season, date=None):
-        """Belirli bir takımın, lig ve sezondaki istatistiklerini almak için kullanılan metod."""
+        """Method used to retrieve the statistics of a specific team for a given league and season."""
         endpoint = "teams/statistics"
         params = {
             "team": team_id,
@@ -15,12 +15,12 @@ class TeamStats:
         }
         if date:
             params["date"] = date
-        logging.info(f"Takım {team_id}, lig {league_id}, sezon {season} için istatistikler alınıyor.")
+        logging.info(f"Retrieving statistics for team {team_id}, league {league_id}, season {season}.")
         response = self.api_client.send_request(endpoint, params=params)
 
         if response and "error" in response:
-            logging.error(f"{team_id} takımının istatistikleri alınamadı.")
-            return None  # Hata durumunda None döndür
+            logging.error(f"Statistics for team {team_id} could not be retrieved.")
+            return None  # Return None in case of error
 
-        logging.info(f"{team_id} takımının istatistikleri başarıyla alındı.")
+        logging.info(f"Statistics for team {team_id} successfully retrieved.")
         return response

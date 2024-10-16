@@ -6,7 +6,7 @@ class Timezone:
         self.api_client = api_client
 
     def get_timezones(self):
-        """Mevcut tüm zaman dilimlerini almak için kullanılan metod"""
+        """Method used to retrieve all available timezones."""
         endpoint = "timezone"
-        logging.info("Mevcut tüm zaman dilimleri alınıyor.")
-        return self.api_client.make_request(endpoint)
+        logging.info("Retrieving all available timezones.")
+        return self.api_client.send_request(endpoint)

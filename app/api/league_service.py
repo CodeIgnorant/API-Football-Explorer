@@ -7,11 +7,11 @@ class Leagues:
 
     def get_leagues_country_current_type(self, country_name, league_type):
         if not country_name or len(country_name) < 2:
-            logging.error("Geçersiz ülke adı. En az 2 karakter olmalıdır.")
+            logging.error("Invalid country name. It must be at least 2 characters long.")
             return None
 
         if league_type not in ["league", "cup"]:
-            logging.error("Geçersiz lig türü. 'league' veya 'cup' olmalıdır.")
+            logging.error("Invalid league type. It must be 'league' or 'cup'.")
             return None
 
         endpoint = "leagues"
@@ -20,23 +20,23 @@ class Leagues:
             "type": league_type,
             "current": "true"
         }
-        logging.info(f"{country_name} ülkesindeki {league_type} türündeki aktif ligler alınıyor.")
+        logging.info(f"Retrieving active {league_type} leagues in {country_name}.")
         response = self.api_client.send_request(endpoint, params=params)
 
         if response is None or 'response' not in response or len(response['response']) == 0:
-            logging.error("Ligler alınamadı veya API yanıtında beklenmeyen yapı: %s", response)
+            logging.error("Leagues could not be retrieved or unexpected structure in API response: %s", response)
             return None
 
-        logging.info("Ligler başarıyla alındı.")
+        logging.info("Leagues successfully retrieved.")
         return response['response']
 
     def get_leagues_country_season_type(self, country_name, season, league_type):
         if not country_name or len(country_name) < 2:
-            logging.error("Geçersiz ülke adı. En az 2 karakter olmalıdır.")
+            logging.error("Invalid country name. It must be at least 2 characters long.")
             return None
 
         if league_type not in ["league", "cup"]:
-            logging.error("Geçersiz lig türü. 'league' veya 'cup' olmalıdır.")
+            logging.error("Invalid league type. It must be 'league' or 'cup'.")
             return None
 
         endpoint = "leagues"
@@ -45,12 +45,12 @@ class Leagues:
             "season": season,
             "type": league_type
         }
-        logging.info(f"{country_name} ülkesindeki {league_type} türündeki ligler alınıyor.")
+        logging.info(f"Retrieving {league_type} leagues in {country_name} for the season.")
         response = self.api_client.send_request(endpoint, params=params)
 
         if response is None or 'response' not in response or len(response['response']) == 0:
-            logging.error("Ligler alınamadı veya API yanıtında beklenmeyen yapı: %s", response)
+            logging.error("Leagues could not be retrieved or unexpected structure in API response: %s", response)
             return None
 
-        logging.info("Ligler başarıyla alındı.")
+        logging.info("Leagues successfully retrieved.")
         return response['response']

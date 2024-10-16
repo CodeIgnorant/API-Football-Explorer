@@ -1,24 +1,24 @@
 from flask import render_template
 from app import app
-from app.api.league_service import Leagues  # Leagues sınıfını içe aktar
-from app.api.api_client import APIClient  # APIClient sınıfını içe aktar
+from app.api.league_service import Leagues  # Import the Leagues class
+from app.api.api_client import APIClient  # Import the APIClient class
 import logging
 
-@app.route('/<country_name>/leagues')  # Ülke adı ile aktif ligler
+@app.route('/<country_name>/leagues')  # Active leagues by country name
 def get_country_leagues(country_name):
-    """Belirli bir ülkenin aktif liglerini almak için route."""
-    api_client = APIClient()  # APIClient örneği oluştur
-    leagues_service = Leagues(api_client)  # Leagues sınıfını başlat
+    """Route to retrieve active leagues for a specific country."""
+    api_client = APIClient()  # Create an APIClient instance
+    leagues_service = Leagues(api_client)  # Initialize the Leagues class
 
-    # Ülkeye ait aktif ligleri al
+    # Retrieve active leagues for the country
     leagues = leagues_service.get_leagues_country_current_type(country_name, "league")
 
-    # Loglama ile dönen veriyi kontrol et
-    logging.info(f"{country_name} ülkesindeki aktif ligler listesi")
+    # Log the retrieved data
+    logging.info(f"List of active leagues in {country_name}")
 
-    # Eğer ligler varsa, şablonu renderla
+    # If there are leagues, render the template
     if leagues:
         return render_template('country_leagues.html', country_name=country_name, leagues=leagues)
     else:
-        logging.error(f"{country_name} ülkesindeki ligler alınamadı.")
-        return render_template('error.html', message="Ligler bulunamadı!"), 404  # Hata sayfasını renderla
+        logging.error(f"Leagues could not be retrieved for {country_name}.")
+        return render_template('error.html', message="Leagues not found!"), 404  # Render the error page

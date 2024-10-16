@@ -1,26 +1,26 @@
 from flask import Response
 from app import app
-from app.api.api_connection import APIConnection  # APIConnection sınıfını import ediyoruz
+from app.api.api_connection import APIConnection
 import logging
 import json
 
-# Loglama ayarları
+# Log settings
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 @app.route('/test-api')
 def test_api():
-    """API bağlantısını test eden fonksiyon."""
+    """Function that tests the API connection."""
     
-    # APIConnection'ı başlat
+    # Start the APIConnection
     connection = APIConnection()
 
-    logging.info("API bağlantısı test ediliyor...")  # Test sürecinin başlangıcını logla
+    logging.info("Testing the API connection...")
     
     if connection.test_connection():
-        logging.info("API bağlantısı başarılı!")
-        response = {"message": "API bağlantısı başarılı!", "status": "success"}
+        logging.info("API connection successful!")
+        response = {"message": "API connection successful!", "status": "success"}
     else:
-        logging.error("API bağlantısı başarısız!")
-        response = {"message": "API bağlantısı başarısız!", "status": "fail"}
+        logging.error("API connection failed!")
+        response = {"message": "API connection failed!", "status": "fail"}
 
     return Response(json.dumps(response, ensure_ascii=False), content_type="application/json; charset=utf-8")

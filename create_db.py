@@ -1,16 +1,16 @@
 import logging
 from app import db
-from app.models import *  # Tüm modelleri içe aktar
+from app.models import *  # Import all models
 
-# Logging yapılandırması
+# Logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def create_database():
     try:
-        db.create_all()  # Tüm tanımlı modeller için tabloları oluştur
-        logging.info("Veritabanı ve tablolar başarıyla oluşturuldu.")
+        db.create_all()  # Create tables for all defined models
+        logging.info("Database and tables successfully created.")
     except Exception as e:
-        logging.error(f"Veritabanı oluşturulurken bir hata meydana geldi: {e}")
+        logging.error(f"An error occurred while creating the database: {e}")
 
 if __name__ == "__main__":
-    create_database()  # Script çalıştırıldığında veritabanını oluştur
+    create_database()  # Create the database when the script is run

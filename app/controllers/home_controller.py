@@ -3,4 +3,4 @@ from app import app
 
 @app.route('/')
 def home():
-    return render_template('index.html')  # templates/index.html dosyasını render et
+    return render_template('index.html')  # Render the templates/index.html file
