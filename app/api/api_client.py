@@ -18,9 +18,9 @@ class APIClient:
         :param kwargs: Dictionary of optional parameters to send in the request.
         """
         # Get the endpoint configuration
-        config = endpoint_config.get(endpoint, {})
-        required_params = config.get("required_params", [])
-        optional_params = config.get("optional_params", [])
+        endpoint_params = endpoint_config.get(endpoint, {})
+        required_params = endpoint_params.get("required_params", [])
+        optional_params = endpoint_params.get("optional_params", [])
 
         # Validate required parameters
         missing_params = [param for param in required_params if param not in kwargs]
