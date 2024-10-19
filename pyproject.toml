@@ -2,7 +2,7 @@
 name = "api-football-explorer"
 version = "0.1.0"
 description = ""
-authors = ["Kemal Yilmaz <kemalylmz@gmail.com>"]
+authors = ["Code Ignorant"]
 license = "MIT"
 readme = "README.md"
 
