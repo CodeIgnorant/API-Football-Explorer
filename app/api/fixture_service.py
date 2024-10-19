@@ -15,7 +15,9 @@ class Fixtures:
         endpoint = "fixtures"
         params = {"id": fixture_id}
         logging.info(f"Retrieving match information with fixture ID: {fixture_id}")
-        response = self.api_client.send_request(endpoint, params=params)
+
+        # Send request with APIClient
+        response = self.api_client.send_request(endpoint, **params)
 
         if response and "error" in response:
             logging.error("Match information could not be retrieved.")
@@ -39,8 +41,12 @@ class Fixtures:
             "league": league_id,
             "season": season
         }
+
+        # Optional status parameter
         if status:
             params["status"] = status
+        
+        # Validate and add optional date parameter
         if date:
             try:
                 datetime.strptime(date, '%Y-%m-%d')  # Check date format
@@ -50,7 +56,7 @@ class Fixtures:
                 return None  # Return None in case of error
 
         logging.info(f"Retrieving matches for league {league_id} and season {season}.")
-        response = self.api_client.send_request(endpoint, params=params)
+        response = self.api_client.send_request(endpoint, **params)
 
         if response and "error" in response:
             logging.error(f"Matches for league {league_id} could not be retrieved.")

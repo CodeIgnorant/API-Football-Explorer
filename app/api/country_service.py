@@ -2,13 +2,13 @@ import logging
 from app.api.api_client import APIClient
 
 class Countries:
-    def __init__(self, api_client):  # Takes APIClient as a parameter
+    def __init__(self, api_client: APIClient):  # Takes APIClient as a parameter
         self.api_client = api_client  # Receives the APIClient instance
 
-    def get_countries(self):
+    def get_countries(self, **kwargs):
         """Method used to retrieve the list of all available countries."""
         endpoint = "countries"
-        response = self.api_client.send_request(endpoint)  # Send request with APIClient
+        response = self.api_client.send_request(endpoint, **kwargs)  # Send request with APIClient
         logging.debug(f"Response from API: {response}")  # Lower level log
 
         if response is None or len(response) == 0:
@@ -25,8 +25,8 @@ class Countries:
             return None  # Return None in case of error
 
         endpoint = "countries"
-        params = {"name": name}
-        response = self.api_client.send_request(endpoint, params=params)  # Send request with APIClient
+        params = {"name": name}  # Create a params dictionary for the request
+        response = self.api_client.send_request(endpoint, **params)  # Send request with APIClient
 
         if response is None or len(response) == 0:
             logging.error(f"Information for country {name} could not be retrieved.")
@@ -42,8 +42,8 @@ class Countries:
             return None  # Return None in case of error
 
         endpoint = "countries"
-        params = {"code": code}
-        response = self.api_client.send_request(endpoint, params=params)  # Send request with APIClient
+        params = {"code": code}  # Create a params dictionary for the request
+        response = self.api_client.send_request(endpoint, **params)  # Send request with APIClient
 
         if response is None or len(response) == 0:
             logging.error(f"Information for country {code} could not be retrieved.")

@@ -21,7 +21,9 @@ class Standings:
             "season": season
         }
         logging.info(f"Retrieving standings for league {league_id} for the {season} season.")
-        response = self.api_client.send_request(endpoint, params=params)
+        
+        # Send request with APIClient
+        response = self.api_client.send_request(endpoint, **params)
 
         if response and "error" in response:
             logging.error(f"Standings could not be retrieved for league {league_id} for the {season} season.")
