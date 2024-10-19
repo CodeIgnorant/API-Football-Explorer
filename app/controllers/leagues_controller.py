@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from app.api.league_service import Leagues  # Import the Leagues class
+from app.api.leagues_service import Leagues  # Import the Leagues class
 from app.api.api_client import APIClient  # Import the APIClient class
 import logging
 

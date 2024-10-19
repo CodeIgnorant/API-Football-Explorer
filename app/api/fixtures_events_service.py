@@ -1,29 +1,29 @@
 import logging
 from app.api.api_client import APIClient
 
-class Standings:
+class FixturesEvents:
     def __init__(self, api_client: APIClient):
         self.api_client = api_client
 
-    def get_standings(self, season, **kwargs):
-        """Method used to retrieve standings based on a specific season."""
-        endpoint = "standings"
+    def get_fixtures_events(self, fixture, **kwargs):
+        """Method used to retrieve events for a specific fixture."""
+        endpoint = "fixtures/events"
         
         # Prepare parameters dictionary
         params = {
-            "season": season,
+            "fixture": fixture,
         }
         # Include optional parameters
         params.update(kwargs)
 
-        logging.info(f"Retrieving standings for season {season}.")
+        logging.info(f"Retrieving events for fixture {fixture}.")
         
         # Send request with APIClient
         response = self.api_client.send_request(endpoint, **params)
 
         if response and "error" in response:
-            logging.error(f"Standings for season {season} could not be retrieved.")
+            logging.error(f"Events for fixture {fixture} could not be retrieved.")
             return None  # Return None in case of error
 
-        logging.info(f"Standings for season {season} successfully retrieved.")
+        logging.info(f"Events for fixture {fixture} successfully retrieved.")
         return response

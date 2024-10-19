@@ -1,22 +1,22 @@
 import logging
 from app.api.api_client import APIClient
 
-class Fixtures:
+class Venues:
     def __init__(self, api_client: APIClient):
         self.api_client = api_client
 
-    def get_fixtures(self, **kwargs):
-        """Method used to retrieve fixtures information."""
-        endpoint = "fixtures"
+    def get_venues(self, **kwargs):
+        """Method used to retrieve venue information."""
+        endpoint = "venues"
         
-        logging.info("Retrieving fixtures information.")
+        logging.info("Retrieving venue information.")
         
         # Send request with APIClient; no required params to validate
         response = self.api_client.send_request(endpoint, **kwargs)
 
         if response and "error" in response:
-            logging.error("Fixtures could not be retrieved.")
+            logging.error("Venues could not be retrieved.")
             return None  # Return None in case of error
 
-        logging.info("Fixtures successfully retrieved.")
+        logging.info("Venues successfully retrieved.")
         return response
