@@ -1,6 +1,6 @@
 from flask import render_template  # Import the render_template function
 from app import app  # Import the app instance
-from app.api.country_service import Countries  # Import the Countries class
+from app.api.countries_service import Countries  # Import the Countries class
 from app.api.api_client import APIClient  # Import the APIClient class
 import logging  # Required for logging
 
