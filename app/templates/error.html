@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hata</title>
-    <link href="https://cdn.tailwindcss.com" rel="stylesheet"> <!-- Tailwind CSS CDN -->
-</head>
-<body class="bg-gray-100">
-    <div class="container mx-auto mt-4">
-        <h1 class="text-red-600 text-3xl font-bold">An Error Occurred!</h1>
-        <p class="mt-2">{{ message }}</p>
-        <a href="/" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Return to Homepage</a>
+{% extends "base.html" %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-danger display-4 fw-bold">An Error Occurred!</h1>
+        <p class="mt-3">{{ message }}</p>
+        <a href="/" class="btn btn-primary mt-4">Return to Homepage</a>
     </div>
-</body>
-</html>
+{% endblock %}

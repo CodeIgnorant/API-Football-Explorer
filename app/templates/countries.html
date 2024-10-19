@@ -3,19 +3,19 @@
 {% block title %}Countries{% endblock %}
 
 {% block content %}
-<div class="container mx-auto py-4">
-    <h2 class="text-2xl font-bold">Countries</h2>
+<div class="container py-4">
+    <h2 class="h4 fw-bold mb-4">Countries</h2>
     {% if countries %}
         <ul class="list-group">
             {% for country in countries %}
-                <li class="list-group-item py-2">
-                    <img src="{{ country.flag }}" alt="{{ country.name }} flag" class="inline-block w-6 h-6 mr-2">
+                <li class="list-group-item d-flex align-items-center py-2">
+                    <img src="{{ country.flag }}" alt="{{ country.name }} flag" class="me-2" style="width: 24px; height: 24px;">
                     <span>{{ country.name }}</span>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p class="text-red-500">No countries found.</p>
+        <p class="text-danger">No countries found.</p>
     {% endif %}
 </div>
 {% endblock %}

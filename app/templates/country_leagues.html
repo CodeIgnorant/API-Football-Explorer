@@ -3,28 +3,28 @@
 {% block title %}{{ country_name }} Current Season Leagues{% endblock %}
 
 {% block content %}
-<div class="container mx-auto py-4">
-    <h2 class="text-2xl font-bold py-4">{{ country_name }} Current Season Leagues</h2>
-    <table class="min-w-full border-collapse border border-gray-300">
-        <thead>
-            <tr class="bg-gray-200">
-                <th class="border border-gray-300 px-4 py-2">League Name</th>
-                <th class="border border-gray-300 px-4 py-2">League Type</th>
-                <th class="border border-gray-300 px-4 py-2">Season</th>
-                <th class="border border-gray-300 px-4 py-2">Start Date</th>
-                <th class="border border-gray-300 px-4 py-2">End Date</th>
-                <th class="border border-gray-300 px-4 py-2">Current Season</th>
+<div class="container py-4">
+    <h2 class="h4 fw-bold py-4">{{ country_name }} Current Season Leagues</h2>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">League Name</th>
+                <th scope="col">League Type</th>
+                <th scope="col">Season</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Current Season</th>
             </tr>
         </thead>
         <tbody>
             {% for league in leagues %}
-                <tr class="hover:bg-gray-100">
-                    <td class="border border-gray-300 px-4 py-2">{{ league.league.name }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ league.league.type }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ league.seasons[0].year }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ league.seasons[0].start }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ league.seasons[0].end }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ 'Yes' if league.seasons[0].current else 'No' }}</td>
+                <tr>
+                    <td>{{ league.league.name }}</td>
+                    <td>{{ league.league.type }}</td>
+                    <td>{{ league.seasons[0].year }}</td>
+                    <td>{{ league.seasons[0].start }}</td>
+                    <td>{{ league.seasons[0].end }}</td>
+                    <td>{{ 'Yes' if league.seasons[0].current else 'No' }}</td>
                 </tr>
             {% endfor %}
         </tbody>
