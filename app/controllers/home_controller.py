@@ -1,6 +1,10 @@
-from flask import render_template
-from app import app
+from flask import Blueprint, render_template
 
-@app.route('/')
+# Create a Blueprint for the home route
+home_controller = Blueprint('home_controller', __name__)
+
+# Define a route for the home page
+@home_controller.route('/')
 def home():
-    return render_template('index.html')  # Render the templates/index.html file
+    """Home page route."""
+    return render_template('index.html')  # Render index.html templates

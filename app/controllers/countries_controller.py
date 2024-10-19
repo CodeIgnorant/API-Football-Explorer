@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 from app.api.countries_service import Countries
 
 # Create a Blueprint for countries
@@ -12,6 +12,6 @@ def get_countries():
     response = countries_service.get_countries()
 
     if response:
-        return response, 200  # Directly return the response if successful
+        return render_template('countries.html', countries=response['response'])  # Render HTML template
     else:
         return {"error": "Failed to retrieve countries"}, 500  # Return error message if the request fails
