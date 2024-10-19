@@ -2,8 +2,8 @@ import logging
 from app.api.api_client import APIClient
 
 class TeamsSeasons:
-    def __init__(self, api_client: APIClient):
-        self.api_client = api_client
+    def __init__(self):
+        self.api_client = APIClient()
 
     def get_teams_seasons(self, team_id, **kwargs):
         """Method used to retrieve available seasons for a specific team."""

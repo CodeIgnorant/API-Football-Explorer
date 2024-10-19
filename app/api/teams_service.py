@@ -2,8 +2,8 @@ import logging
 from app.api.api_client import APIClient
 
 class Teams:
-    def __init__(self, api_client: APIClient):
-        self.api_client = api_client
+    def __init__(self):
+        self.api_client = APIClient()
 
     def get_teams(self, **kwargs):
         """Method used to retrieve team information."""
@@ -11,6 +11,7 @@ class Teams:
 
         logging.info("Retrieving team information.")
         
+        # Send request with APIClient
         response = self.api_client.send_request(endpoint, **kwargs)
 
         if response and "error" in response:

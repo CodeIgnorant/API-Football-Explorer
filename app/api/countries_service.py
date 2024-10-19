@@ -2,8 +2,8 @@ import logging
 from app.api.api_client import APIClient
 
 class Countries:
-    def __init__(self, api_client: APIClient):
-        self.api_client = api_client
+    def __init__(self):
+        self.api_client = APIClient()
 
     def get_countries(self, **kwargs):
         """Method used to retrieve the list of all available countries."""

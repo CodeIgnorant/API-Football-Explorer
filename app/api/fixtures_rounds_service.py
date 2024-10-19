@@ -2,8 +2,8 @@ import logging
 from app.api.api_client import APIClient
 
 class FixturesRounds:
-    def __init__(self, api_client: APIClient):
-        self.api_client = api_client
+    def __init__(self):
+        self.api_client = APIClient()
 
     def get_fixtures_rounds(self, league, season, **kwargs):
         """Method used to retrieve fixtures rounds based on the league and season."""
