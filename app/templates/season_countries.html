@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Countries for Season {{ season }}{% endblock %}
+
+{% block content %}
+    <h2 class="h4 fw-bold mb-4">Countries for Season {{ season }}</h2>
+    
+    {% if countries.response %}
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" style="width: 50px;">Flag</th>
+                    <th scope="col" style="width: 80px;">Code</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for country in countries.response %}
+                    <tr>
+                        <td>
+                            <img src="{{ country.flag }}" alt="{{ country.name }} flag" style="width: 24px; height: 24px;">
+                        </td>
+                        <td>{{ country.code }}</td>
+                        <td>
+                            <!-- Link with the country name instead of "View Leagues" -->
+                            <a href="/seasons/{{ season }}/{{ country.name }}">{{ country.name }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-danger">No countries found for season {{ season }}.</p>
+    {% endif %}
+{% endblock %}

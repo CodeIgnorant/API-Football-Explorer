@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Leagues for {{ country }} - Season {{ season }}{% endblock %}
+
+{% block content %}
+    <h2 class="h4 fw-bold mb-4">Leagues for {{ country }} - Season {{ season }}</h2>
+
+    {% if leagues %}
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">League ID</th>
+                    <th scope="col">League Name</th>
+                    <th scope="col">League Type</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for league in leagues %}
+                    <tr>
+                        <td>{{ league.league.id }}</td>
+                        <td>
+                            <!-- Link to the specific league page using the league ID and season -->
+                            <a href="/seasons/{{ season }}/{{ league.league.id }}">
+                                {{ league.league.name }}
+                            </a>
+                        </td>
+                        <td>{{ league.league.type }}</td>
+                        <td>{{ league.seasons[0].start }}</td> <!-- Start date -->
+                        <td>{{ league.seasons[0].end }}</td> <!-- End date -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-danger">No leagues found for {{ country }} in the {{ season }} season.</p>
+    {% endif %}
+{% endblock %}
