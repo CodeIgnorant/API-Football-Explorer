@@ -1,21 +1,22 @@
 import logging
 from app.api.api_client import APIClient
 
-class LeaguesSeasons:
+class SeasonsService:
     def __init__(self):
         self.api_client = APIClient()
 
-    def get_leagues_seasons(self, **kwargs):
-        """Method used to retrieve available seasons for leagues."""
+    def get_seasons(self, **kwargs):
+        """Method used to retrieve available seasons."""
         endpoint = "leagues/seasons"
 
-        logging.info("Retrieving available seasons for leagues.")
+        logging.info("Retrieving available seasons.")
         
+        # Send request to API
         response = self.api_client.send_request(endpoint, **kwargs)
 
-        if response and "error" in response:
+        if not response or "error" in response:
             logging.error("Seasons could not be retrieved.")
             return None  # Return None in case of error
 
         logging.info("Seasons successfully retrieved.")
-        return response
+        return response  # Return the API response
