@@ -1,19 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %}Leagues Seasons{% endblock %}
+{% block title %}Available Seasons{% endblock %}
 
 {% block content %}
     <h2 class="h4 fw-bold mb-4">Available Seasons</h2>
-
-    {% if seasons %}
+    
+    {% if response.response %}
         <ul class="list-group">
-            {% for season in seasons %}
+            {% for season in response.response %}
                 <li class="list-group-item">
                     {{ season }}
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p class="text-danger">No seasons available.</p>
+        <p class="text-danger">No seasons found.</p>
     {% endif %}
+    
+    <!-- Additional Information -->
+    <p class="text-muted mt-4" style="font-size: 0.875rem;">
+        This page was generated with {{ response.results }} results and {{ response.errors | length }} errors in {{ total_time | round(2) }} seconds.
+    </p>
 {% endblock %}
