@@ -4,6 +4,7 @@ from .countries_controller import countries_controller  # Countries controller
 from .seasons_controller import seasons_controller # Seasons controller
 from .season_countries_controller import season_countries_controller # Season countries controller
 from .leagues_controller import leagues_controller # Leagues controller
+from .leagues_dashboard_controller import leagues_dashboard_controller
 
 # List of all Blueprints
 blueprints = [
@@ -13,4 +14,5 @@ blueprints = [
     seasons_controller,
     season_countries_controller,
     leagues_controller,
+    leagues_dashboard_controller,
 ]

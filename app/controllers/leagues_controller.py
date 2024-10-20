@@ -12,7 +12,7 @@ leagues_service = Leagues()  # Instantiate the Leagues service
 def get_leagues_by_season_and_country(season, country):
     """Show the leagues for a specific season and country."""
     # Pass season and country as kwargs to the leagues service
-    response = leagues_service.get_leagues_by_season_and_country(season=season, country=country)
+    response = leagues_service.get_leagues(season=season, country=country)
 
     if response and "response" in response:
         # Sort leagues by league ID
