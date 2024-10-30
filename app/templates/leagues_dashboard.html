@@ -3,11 +3,30 @@
 {% block title %}League Dashboard - {{ league_info.league.name }}{% endblock %}
 
 {% block content %}
-    <div class="container py-4">
+
+<div class="nav-scroller bg-body shadow-sm">
+    <div class="container">
+    <nav class="nav" aria-label="Secondary navigation">
+      <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+      <a class="nav-link" href="#">
+        Friends
+        <span class="badge text-bg-light rounded-pill align-text-bottom">27</span>
+      </a>
+      <a class="nav-link" href="#">Explore</a>
+      <a class="nav-link" href="#">Suggestions</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Link</a>
+    </nav>
+</div>
+  </div>
+
+
+    <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="h4 fw-bold">League Details - {{ league_info.league.name }}</h2>
-            <!-- Button to view fixtures for the league -->
-            <a href="/seasons/{{ season }}/{{ league_info.league.id }}/fixtures" class="btn btn-primary">View Fixtures</a>
         </div>
 
         <!-- League Information -->

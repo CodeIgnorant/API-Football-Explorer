@@ -3,10 +3,11 @@
 {% block title %}Countries for Season {{ season }}{% endblock %}
 
 {% block content %}
+<div class="container">
     <h2 class="h4 fw-bold mb-4">Countries for Season {{ season }}</h2>
-    
+
     {% if countries.response %}
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered">
             <thead class="table-light">
                 <tr>
                     <th scope="col" style="width: 50px;">Flag</th>
@@ -32,4 +33,5 @@
     {% else %}
         <p class="text-danger">No countries found for season {{ season }}.</p>
     {% endif %}
+</div>
 {% endblock %}

@@ -3,10 +3,11 @@
 {% block title %}Leagues for {{ country }} - Season {{ season }}{% endblock %}
 
 {% block content %}
+<div class="container">
     <h2 class="h4 fw-bold mb-4">Leagues for {{ country }} - Season {{ season }}</h2>
 
     {% if leagues %}
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered">
             <thead class="table-light">
                 <tr>
                     <th scope="col">League ID</th>
@@ -36,4 +37,5 @@
     {% else %}
         <p class="text-danger">No leagues found for {{ country }} in the {{ season }} season.</p>
     {% endif %}
+</div>
 {% endblock %}

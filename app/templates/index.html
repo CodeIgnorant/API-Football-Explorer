@@ -3,12 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h2 class="h4 fw-bold mb-4">Available Seasons</h2>
-<ul class="list-group">
-    {% for season in seasons %}
-        <li class="list-group-item">
-            <a href="/seasons/{{ season }}/countries">{{ season }}</a>
-        </li>
-    {% endfor %}
-</ul>
+<div class="container">
+    <h2 class="h4 fw-bold mb-4">Available Seasons</h2>
+    <ul class="list-group">
+        {% for season in seasons %}
+            <li class="list-group-item">
+                <a href="/seasons/{{ season }}/countries">{{ season }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
